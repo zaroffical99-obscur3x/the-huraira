@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Root - Premium Apps & Software</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00d4ff, #0099ff, #00d4ff, #0099ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rgbShine 3s ease infinite, float 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            position: relative;
+        }
+
+        @keyframes rgbShine {
+            0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+            50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
+            100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #00d4ff;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #aaa;
+            max-width: 600px;
+            animation: fadeIn 1.5s ease-in;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .code-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .code-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #00d4ff;
+        }
+
+        .code-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-input {
+            width: 60px;
+            height: 70px;
+            font-size: 2rem;
+            text-align: center;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .warning {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #ffc107;
+        }
+
+        .tiktok-link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tiktok-link:hover {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+        }
+
+        .error-msg {
+            color: #ff4757;
+            margin-top: 15px;
+            font-size: 1rem;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .apps-page {
+            width: 100%;
+            max-width: 1200px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .apps-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .apps-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .app-card.locked::after {
+            content: '\f023';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #ffc107;
+            display: none;
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .app-icon-letter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .app-name {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .app-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .app-features li {
+            padding: 8px 0;
+            color: #aaa;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .app-features li:before {
+            content: '✓ ';
+            color: #00d4ff;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .download-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #00ff87, #00d4a1);
+            color: #000;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 25px rgba(0, 255, 135, 0.4);
+        }
+
+        .download-btn i {
+            font-size: 1.3rem;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .tutorials-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tutorials-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #00d4ff;
+        }
+
+        .tutorial-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #00d4ff;
+            transition: all 0.3s ease;
+        }
+
+        .tutorial-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+
+        .tutorial-item h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-item p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .code-input {
+                width: 50px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .code-section {
+                padding: 25px;
+            }
+
+            .back-btn {
+                top: 10px;
+                left: 10px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <!-- Code Entry Page -->
+        <div id="codePage">
+            <div class="logo">ZeroRoot</div>
+            <div class="tagline">Everything For You Bro ❤️</div>
+            <div class="subtitle">I Just Want To See You Happy, That's It. I Don't Want Anything From You.</div>
+            
+            <div class="code-section">
+                <div class="code-title">Enter Access Code</div>
+                <div class="code-inputs">
+                    <input type="text" class="code-input" maxlength="1" id="c1">
+                    <input type="text" class="code-input" maxlength="1" id="c2">
+                    <input type="text" class="code-input" maxlength="1" id="c3">
+                    <input type="text" class="code-input" maxlength="1" id="c4">
+                    <input type="text" class="code-input" maxlength="1" id="c5">
+                </div>
+                <button class="submit-btn" onclick="verifyCode()">
+                    <i class="fas fa-unlock"></i> Unlock Access
+                </button>
+                <div id="errorMsg" class="error-msg hidden"></div>
+                <div class="warning">
+                    <i class="fas fa-info-circle"></i> Don't have a code? Get it from my TikTok! <br>
+                    <a href="https://www.tiktok.com/@zeroroot" target="_blank" class="tiktok-link">
+                        <i class="fab fa-tiktok"></i> @zeroroot
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apps Page -->
+        <div id="appsPage" class="apps-page hidden">
+            <button class="back-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+            
+            <div class="apps-header">
+                <h1 id="pageTitle">Premium Apps Collection</h1>
+                <p style="color: #aaa; margin-top: 10px;">Handpicked apps just for you</p>
+            </div>
+
+            <div class="apps-grid" id="appsGrid">
+                <!-- Apps will be loaded here -->
+            </div>
+
+            <div class="tutorials-section">
+                <h2><i class="fas fa-graduation-cap"></i> Tutorials & Guides</h2>
+                <div class="tutorial-item">
+                    <h3><i class="fas fa-mobile-alt"></i> How to Install APK Files</h3>
+                    <p>Learn how to safely install APK files on your Android device. Enable unknown sources and follow our step-by-step guide.</p>
+                </div>
+                <div class="tutorial-item">
+                    <h3><i class="fas fa-shield-alt"></i> Stay Safe Online</h3>
+                    <p>Important security tips when downloading and using modified apps. Always scan files and use trusted sources.</p>
+                </div>
+                <div class="tutorial-item">
+                    <h3><i class="fas fa-download"></i> Using Mega Download Links</h3>
+                    <p>Quick guide on how to download files from Mega.nz efficiently and safely on any device.</p>
+                </div>
+                <div class="tutorial-item">
+                    <h3><i class="fas fa-video"></i> Watch Full Tutorials</h3>
+                    <p>Visit my TikTok <a href="https://www.tiktok.com/@zeroroot" target="_blank" class="tiktok-link">@zeroroot</a> for video tutorials and latest updates!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Code input handling
+        const inputs = document.querySelectorAll('.code-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+
+        // Apps data with real app icons
+        const appsData = {
+            'ZR40P': {
+                title: 'Proton VPN Premium',
+                apps: [
+                    {
+                        name: 'Proton VPN',
+                        icon: 'https://raw.githubusercontent.com/zaroffical99-obscur3x/the-huraira/refs/heads/main/images.jpeg',
+                        features: ['Premium unlocked', 'All servers access', 'No ads', 'Unlimited bandwidth'],
+                        link: 'https://mega.nz/file/HJdiSTRa#Esv5cvQdr94SlN_ybMoTUqQv2Q68mZYRO8jsWCvKv1Q',
+                        free: true
+                    }
+                ]
+            },
+            'CR7TK': {
+                title: 'TikTok Premium',
+                apps: [
+                    {
+                        name: 'TikTok Premium',
+                        icon: 'https://raw.githubusercontent.com/zaroffical99-obscur3x/the-huraira/refs/heads/main/tiktok-icon-free-png.jpeg',
+                        features: ['Ad-free experience', 'Download videos', 'Premium filters', 'Extended editing'],
+                        link: 'https://mega.nz/file/eJtwXbpJ#q--Ug9-0eHU3sjrZdesXVyKAaWDkorKnIta-Gmo6XJk',
+                        free: false
+                    }
+                ]
+            },
+            'ZR8TE': {
+                title: 'Premium Apps Collection',
+                apps: [
+                    {
+                        name: 'Spotify Premium',
+                        icon: 'https://play-lh.googleusercontent.com/UrY7BAZ-XfXGpfkeWg0zCCeo-7ras4DCoRalC_WXXWTK9q5b0Iw7B0YQMsVxZaNB7DM=w240-h480',
+                        features: ['Ad-free music', 'Offline downloads', 'High quality audio', 'Unlimited skips'],
+                        link: 'https://mega.nz/file/LYVDiD7T#ggcSyCodN3VvrCflPbJVlpk6PZWCVT43HNongbn_6MA',
+                        free: true
+                    },
+                    {
+                        name: 'Netflix Premium',
+                        icon: 'https://raw.githubusercontent.com/zaroffical99-obscur3x/the-huraira/refs/heads/main/netflix.png',
+                        features: ['4K streaming', 'Multiple profiles', 'Download content', 'No ads'],
+                        link: 'https://mega.nz/file/your-netflix-link',
+                        free: true
+                    },
+                    {
+                        name: 'CapCut Pro letest',
+                        icon: 'https://raw.githubusercontent.com/zaroffical99-obscur3x/the-huraira/refs/heads/main/cap-cut.jpeg',
+                        features: ['Full editing suite', 'All Filter and Templates Unlocked', 'Text to Video', 'AI Video Generator'],
+                        link: 'https://mega.nz/file/7QUn2ByK#VuldJDVDu0PcHCmagyt1YyXK0VvhdijCZHUFHyRGYcM',
+                        free: true
+                    },
+                    {
+                        name: 'Movie Box Premium',
+                        icon: 'https://raw.githubusercontent.com/zaroffical99-obscur3x/the-huraira/refs/heads/main/Movie-Box-icon.jpeg',
+                        features: ['Infinity Coins', 'Premium Unlocked', 'No ads', 'Multiple Downloadings'],
+                        link: 'https://mega.nz/file/OdkFWSSJ#EsmRjoYLF5eiE8oR72IwzOyo6YeKJlrW38I8Pp5Mspk',
+                        free: true
+                    },
+                    {
+                        name: 'Prime Video',
+                        icon: 'https://raw.githubusercontent.com/zaroffical99-obscur3x/the-huraira/refs/heads/main/31W9hs7w0JL.png',
+                        features: ['4k Streaming', 'Multiple Profiles', 'no-Ads', 'Downloading'],
+                        link: 'https://mega.nz/file/vNs1lLwQ#4p5HNx1723Qd006oXaalUQYG-ESS2WV87CjX3PQF8WE',
+                        free: true
+                    },
+                    {
+                        name: 'Telegram Premium',
+                        icon: 'https://play-lh.googleusercontent.com/ZU9cSsyIJZo6Oy7HTHiEPwZg0m2Crep-d5ZrfajqtsH-qgUXSqKpNA2FpPDTn-7qA5Q=w240-h480',
+                        features: ['Faster downloads', 'Exclusive stickers', 'Voice to text', 'Premium badge'],
+                        link: 'https://mega.nz/file/aAkwQIqR#W-TLZ_hob-Ri-3vA5Uuzq3bzahSnRfr_G2imsaBR7C0',
+                        free: true
+                    },
+                    {
+                        name: 'Adobe Photoshop Expres',
+                        icon: 'https://raw.githubusercontent.com/zaroffical99-obscur3x/the-huraira/refs/heads/main/adobe.jpeg',
+                        features: ['Full editing suite', 'All filters', 'Cloud storage', 'Premium tools'],
+                        link: 'https://mega.nz/file/qQ1R0D5D#xYAXVQZPyUx9smnNuq_a6vzRjwf1zKzj4i9LlIUTx3g',
+                        free: true
+                    },
+                    {
+                        name: 'Snaptube ',
+                        icon: 'https://raw.githubusercontent.com/zaroffical99-obscur3x/the-huraira/refs/heads/main/ima).jpeg',
+                        features: ['Fast Downloading', 'no-Ads', 'Unlimited Donloadings', 'Multiple Downloadin Features'],
+                        link: 'https://mega.nz/file/OYVyTZwQ#yauDfld66FnFPrDMM0qpNOYGOWpvi69Q3EaFQKYP6gQ',
+                        free: true
+                    },
+                    {
+                        name: 'AI Video Editor VivaCut',
+                        icon: 'https://raw.githubusercontent.com/zaroffical99-obscur3x/the-huraira/refs/heads/main/1eb8ce5427045df5d449a10818cbba783382c6ddb71a07c246c30b25fbdc3c05_200.jpeg',
+                        features: ['Premium templates', 'Text to Video', 'AI Magic resize', 'AI Background remover'],
+                        link: 'https://mega.nz/file/your-canva-link',
+                        free: true
+                    },
+                    {
+                        name: 'Zero Root Tools',
+                        icon: null,
+                        features: ['System optimization', 'Root access tools', 'App manager', 'Performance boost'],
+                        link: 'https://github.com/zaroffical99-obscur3x/zero-root',
+                        free: true
+                    }
+                ]
+            }
+        };
+
+        function verifyCode() {
+            const code = Array.from(inputs).map(i => i.value.toUpperCase()).join('');
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (appsData[code]) {
+                errorMsg.classList.add('hidden');
+                loadApps(code);
+            } else {
+                errorMsg.textContent = '❌ Invalid code! Get the latest code from @zeroroot on TikTok';
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function loadApps(code) {
+            const data = appsData[code];
+            document.getElementById('codePage').classList.add('hidden');
+            document.getElementById('appsPage').classList.remove('hidden');
+            document.getElementById('pageTitle').textContent = data.title;
+
+            const grid = document.getElementById('appsGrid');
+            grid.innerHTML = '';
+
+            data.apps.forEach(app => {
+                const card = document.createElement('div');
+                card.className = 'app-card';
+                card.onclick = () => handleAppClick(app);
+
+                const features = app.features.map(f => `<li>${f}</li>`).join('');
+
+                // Create icon content
+                let iconContent;
+                if (app.icon && app.icon.startsWith('http')) {
+                    iconContent = `<img src="${app.icon}" alt="${app.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                   <div class="app-icon-letter" style="display:none;">${app.name.charAt(0)}</div>`;
+                } else {
+                    iconContent = `<div class="app-icon-letter">${app.name.charAt(0)}</div>`;
+                }
+
+                card.innerHTML = `
+                    <div class="app-icon">${iconContent}</div>
+                    <div class="app-name">${app.name}</div>
+                    <ul class="app-features">${features}</ul>
+                    <button class="download-btn">
+                        <i class="fas fa-download"></i>
+                        Download Now
+                    </button>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function handleAppClick(app) {
+            window.open(app.link, '_blank');
+        }
+
+        function goBack() {
+            document.getElementById('appsPage').classList.add('hidden');
+            document.getElementById('codePage').classList.remove('hidden');
+            inputs.forEach(i => i.value = '');
+            inputs[0].focus();
+            document.getElementById('errorMsg').classList.add('hidden');
+        }
+
+        // Focus first input on load
+        inputs[0].focus();
+    </script>
+</body>
+</html>
